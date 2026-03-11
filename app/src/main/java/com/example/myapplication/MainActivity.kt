@@ -2,6 +2,7 @@ package com.example.myapp
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -28,6 +29,7 @@ fun NewsScreen() {
     ) {
         SearchBarSection()
         NewsTabsSection()
+        LatestNewsSection()
     }
 }
 
@@ -65,6 +67,34 @@ fun NewsTabsSection() {
         }
         Text("Eventos", color = Color.LightGray, fontSize = 24.sp, fontWeight = FontWeight.Bold)
         Text("Clima", color = Color.LightGray, fontSize = 24.sp, fontWeight = FontWeight.Bold)
+    }
+}
+
+@Composable
+fun LatestNewsSection() {
+    Column(modifier = Modifier.padding(start = 16.dp, bottom = 16.dp)) {
+        Text("Ultimas noticias", fontWeight = FontWeight.Bold, fontSize = 20.sp)
+        Spacer(modifier = Modifier.height(12.dp))
+
+        LazyRow(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+            items(3) {
+                Box(
+                    modifier = Modifier
+                        .size(width = 280.dp, height = 180.dp)
+                        .clip(RoundedCornerShape(25.dp))
+                        .background(Color(0xFF7B61FF))
+                        .padding(20.dp)
+                ) {
+                    Text(
+                        "El presidente de EE.UU. no muestra signos de arrepentimiento...",
+                        color = Color.White,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 18.sp,
+                        modifier = Modifier.align(Alignment.CenterStart)
+                    )
+                }
+            }
+        }
     }
 }
 
